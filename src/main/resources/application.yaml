@@ -1,1 +1,22 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: debt-api
+  datasource:
+    url: jdbc:h2:mem:debt-api
+    username: sa
+    password: password
+    driver-class-name: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
 
+  h2:
+    console:
+      enabled: true
