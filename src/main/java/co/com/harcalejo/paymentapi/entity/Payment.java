@@ -38,6 +38,11 @@ public class Payment {
     private Long loanId;
 
     /**
+     * Monto del pago realizado
+     */
+    private double amount;
+
+    /**
      * Fecha en la que se registro el pago
      */
     private LocalDate registerDate;
