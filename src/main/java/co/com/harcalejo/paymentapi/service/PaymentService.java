@@ -1,6 +1,9 @@
 package co.com.harcalejo.paymentapi.service;
 
 import co.com.harcalejo.paymentapi.dto.RegisterPaymentResponseDTO;
+import co.com.harcalejo.paymentapi.entity.Payment;
+
+import java.util.List;
 
 /**
  * La interface {@code PaymentService} es el componente encargado de definir
@@ -22,4 +25,13 @@ public interface PaymentService {
      */
     RegisterPaymentResponseDTO registerPayment(
             Long loanId, double amount);
+
+    /**
+     * Metodo que permite consultar todos los pagos realizados
+     * a un prestamo
+     *
+     * @param loanId identificador unico del prestamo
+     * @return Lista de los pagos asociados al prestamo
+     */
+    List<Payment> getPaymentsLoan(Long loanId);
 }
