@@ -4,6 +4,7 @@ import co.com.harcalejo.paymentapi.entity.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -22,4 +23,18 @@ public interface PaymentRepository extends JpaRepository<Payment, Long> {
      * @return listado de pagos registrados
      */
     List<Payment> findByLoanId(Long loanId);
+
+    /**
+     * Metodo que permite consultar los pagos de un prestamo, ademas
+     * incluye la fecha de registro para identificar los pagos
+     * realizados antes de esta fecha dada.
+     *
+     * @param loanId identificador del prestamo
+     * @param registerDate representa la fecha de creacion de pago
+     *                     maxima para obtener los registros antes
+     *                     de esta.
+     * @return lista de pagos que corresponden a la consulta
+     */
+    List<Payment> findByLoanIdAndRegisterDateBefore(
+            Long loanId, LocalDate registerDate);
 }
