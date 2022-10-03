@@ -16,7 +16,9 @@ import java.util.List;
 public interface PaymentService {
 
     /**
-     * Metodo para el registro de pagos asociados a un prestamo
+     * Metodo para el registro de pagos asociados a un prestamo. Este
+     * debe validar que el pago no sea superior al valor de la deuda
+     * actual.
      *
      * @param loanId identificador unico del prestamo
      * @param amount monto del pago que se esta registrando
