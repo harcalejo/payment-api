@@ -37,13 +37,6 @@ public class PaymentController {
     }
 
     @GetMapping(value = "/loan/{loanId}")
-    public ResponseEntity<List<Payment>> getPaymentsLoan(
-            @PathVariable Long loanId) {
-        return new ResponseEntity<>(paymentService
-                .getPaymentsLoan(loanId), HttpStatus.OK);
-    }
-
-    @GetMapping(value = "/loan/{loanId}")
     public ResponseEntity<List<Payment>> getPaymentsLoanRegisterDateBefore(
             @PathVariable Long loanId,
             @RequestParam(defaultValue = "#{T(java.time.LocalDate).now()}")
