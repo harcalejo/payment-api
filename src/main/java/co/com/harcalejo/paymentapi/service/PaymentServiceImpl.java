@@ -98,4 +98,12 @@ public class PaymentServiceImpl implements PaymentService{
     public List<Payment> getPaymentsLoan(Long loanId) {
         return paymentRepository.findByLoanId(loanId);
     }
+
+    @Override
+    public List<Payment> getPaymentsLoanRegisterDateBefore(
+            Long loanId, LocalDate registerDate) {
+        return paymentRepository
+                .findByLoanIdAndRegisterDateBefore(
+                        loanId, registerDate);
+    }
 }

@@ -3,6 +3,7 @@ package co.com.harcalejo.paymentapi.service;
 import co.com.harcalejo.paymentapi.dto.RegisterPaymentResponseDTO;
 import co.com.harcalejo.paymentapi.entity.Payment;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -36,4 +37,16 @@ public interface PaymentService {
      * @return Lista de los pagos asociados al prestamo
      */
     List<Payment> getPaymentsLoan(Long loanId);
+
+    /**
+     * Metodo que permite consultar todos los pagos realizados
+     * a un prestamo definiendo una fecha tope, para obtener los
+     * pagos registrados antes de esta fecha data
+     *
+     * @param loanId identificador unico del prestamo
+     * @param registerDate fecha de registro de pago tope
+     * @return Lista de los pagos asociados al prestamo
+     */
+    List<Payment> getPaymentsLoanRegisterDateBefore(
+            Long loanId, LocalDate registerDate);
 }
