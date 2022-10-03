@@ -4,10 +4,12 @@ import co.com.harcalejo.paymentapi.dto.RegisterPaymentRequestDTO;
 import co.com.harcalejo.paymentapi.dto.RegisterPaymentResponseDTO;
 import co.com.harcalejo.paymentapi.entity.Payment;
 import co.com.harcalejo.paymentapi.service.PaymentService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -39,5 +41,16 @@ public class PaymentController {
             @PathVariable Long loanId) {
         return new ResponseEntity<>(paymentService
                 .getPaymentsLoan(loanId), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/loan/{loanId}")
+    public ResponseEntity<List<Payment>> getPaymentsLoanRegisterDateBefore(
+            @PathVariable Long loanId,
+            @RequestParam(defaultValue = "#{T(java.time.LocalDate).now()}")
+                @DateTimeFormat(iso =
+                        DateTimeFormat.ISO.DATE) LocalDate before) {
+        return new ResponseEntity<>(paymentService
+                .getPaymentsLoanRegisterDateBefore(
+                        loanId, before), HttpStatus.OK);
     }
 }
