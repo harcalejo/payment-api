@@ -2,9 +2,9 @@ server:
   port: 8086
 spring:
   application:
-    name: debt-api
+    name: payment-api
   datasource:
-    url: jdbc:h2:mem:debt-api
+    url: jdbc:h2:mem:payment-api
     username: sa
     password: password
     driver-class-name: org.h2.Driver

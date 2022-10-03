@@ -22,5 +22,4 @@ public interface PaymentRepository extends JpaRepository<Payment, Long> {
      * @return listado de pagos registrados
      */
     List<Payment> findByLoanId(Long loanId);
-
 }

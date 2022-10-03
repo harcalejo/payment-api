@@ -1,13 +1,12 @@
 package co.com.harcalejo.paymentapi.controller;
 
+import co.com.harcalejo.paymentapi.dto.RegisterPaymentRequestDTO;
+import co.com.harcalejo.paymentapi.dto.RegisterPaymentResponseDTO;
 import co.com.harcalejo.paymentapi.entity.Payment;
 import co.com.harcalejo.paymentapi.service.PaymentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +21,17 @@ public class PaymentController {
 
     public PaymentController(PaymentService paymentService) {
         this.paymentService = paymentService;
+    }
+
+    @PostMapping(value = "/loan/{loanId}")
+    public ResponseEntity<RegisterPaymentResponseDTO> registerPayment(
+        @RequestBody RegisterPaymentRequestDTO registerPaymentRequestDTO,
+        @PathVariable Long loanId) {
+
+        return new ResponseEntity<>(paymentService
+                .registerPayment(loanId,
+                        registerPaymentRequestDTO.getAmount()),
+                HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/loan/{loanId}")
