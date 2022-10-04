@@ -39,6 +39,7 @@ librerias de junit y mockito para la implementacion de las pruebas unitarias rea
 
 # Features
 ## Registro de Pagos realizados
+Permite registrar un pago asociado a un prestamo, pero el pago no puede superar el valor total de la deuda actual.
 
 #### /payments/loan/{loanId}
 ###### Request body
@@ -58,6 +59,7 @@ librerias de junit y mockito para la implementacion de las pruebas unitarias rea
 ```
 
 ## Listado de Pagos
+Permite consultar todos los pagos asociados a un prestamo
 
 #### GET /payments/loan/{loanId}
 
@@ -80,7 +82,7 @@ librerias de junit y mockito para la implementacion de las pruebas unitarias rea
 ```
 
 #### GET /payments/loan/{loanId}?before=2022-04-01
-
+El parametro before complementa esta busqueda para limitar los pagos realizados antes de la fecha dada.
 ###### Response body
 ```json
 [
